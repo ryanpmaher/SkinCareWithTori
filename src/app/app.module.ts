@@ -7,9 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { QuestionsComponent } from './questions/questions.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, QuestionsComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, NgxSkeletonLoaderModule],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

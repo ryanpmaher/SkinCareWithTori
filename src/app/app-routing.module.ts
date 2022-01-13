@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BaseLayoutComponent } from './shared/components/layouts/base-layout/base-layout.component';
 import { SurveyComponent } from './survey/survey.component';
+import { QuestionsComponent } from './questions/questions.component';
 const baseLayoutRouting: Routes = [
   {
     path: 'products',
@@ -18,6 +19,10 @@ const baseLayoutRouting: Routes = [
   {
     path: 'survey',
     component: SurveyComponent
+  },
+  {
+    path: 'questions',
+    component: QuestionsComponent
   },
   {
     path: '',
