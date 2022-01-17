@@ -8,10 +8,10 @@ import { SharedModule } from './shared/shared.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { QuestionsComponent } from './questions/questions.component';
-
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [AppComponent, QuestionsComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, NgxSkeletonLoaderModule],
+  imports: [BrowserModule, MatButtonModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, NgxSkeletonLoaderModule],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
