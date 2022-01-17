@@ -9,9 +9,11 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { QuestionsComponent } from './questions/questions.component';
 import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 @NgModule({
   declarations: [AppComponent, QuestionsComponent],
-  imports: [BrowserModule, MatButtonModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, NgxSkeletonLoaderModule],
+  imports: [BrowserModule, MatButtonToggleModule, MatButtonModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, NgxSkeletonLoaderModule],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
