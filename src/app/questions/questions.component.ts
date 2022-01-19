@@ -27,7 +27,7 @@ export class QuestionsComponent implements OnInit, MatCardModule, MatButtonModul
     this.currentQ = this.quizQuestions[this.currentQindex].quest;
     this.currentA = this.quizQuestions[this.currentQindex].answer;
     this.currentQmulti = this.quizQuestions[this.currentQindex].multi;
-    console.log(this.selectedAnswer);
+    this.selectedAnswer=""
   }
   public onValChange(val: string) {
     this.selectedAnswer = val;

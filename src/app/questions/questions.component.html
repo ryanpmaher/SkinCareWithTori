@@ -1,20 +1,29 @@
-<div class="ll-hero">
-  <div class="container">
-    <div class="grid grid-cols-12 gap-x-6">
-      <div class="col-span-12 md:col-span-6 lg:col-span-7 xxl:col-span-6 ll-hero-text">
+<div class="ll-hero border-color:red">
+  <div class="container border-color:red">
         <mat-card>
-          {{ currentQ }}
-          <mat-button-toggle-group *ngIf = "currentQmulti" name = "selected-answers" multiple>
-            <mat-button-toggle *ngFor="let a of currentA" value = "a">{{a}}</mat-button-toggle>
-          </mat-button-toggle-group>
-          <mat-button-toggle-group *ngIf ="!currentQmulti" #group="matButtonToggleGroup" name = "selected-answers"  [value] = "selectedAnswer" (change)="onValChange(group.value)">
-            <mat-button-toggle *ngFor="let a of currentA" value = "{{a}}" class="button-text">{{a}}</mat-button-toggle>
-          </mat-button-toggle-group>
-          <button *ngIf = "currentQindex > 0" mat-raised-button (click)="questionCycle($event,-1)">Back</button>
-          <button *ngIf = "currentQindex < quizQuestions.length-1" mat-raised-button (click)="questionCycle($event,1)">Next Question</button>
-        </mat-card>
-        
-        
-    </div>
+          <div class="grid-container">
+            <div class="item1"><h1 >{{ currentQ }}</h1></div>
+            <div class="item2">
+              <mat-button-toggle-group *ngIf = "currentQmulti" name = "selected-answers" multiple>
+                <mat-button-toggle *ngFor="let a of currentA" value = "a">{{a}}</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+            <div class="item2">
+              <mat-button-toggle-group *ngIf ="!currentQmulti" #group="matButtonToggleGroup" name = "selected-answers"  [value] = "selectedAnswer" (change)="onValChange(group.value)">
+                <mat-button-toggle class="button-text" *ngFor="let a of currentA" value = "{{a}}">{{a}}</mat-button-toggle>
+              </mat-button-toggle-group> 
+            </div>
+            <div class="item3 grid-container-row">
+              <div class="left item1">
+                <button *ngIf = "currentQindex > 0" mat-raised-button (click)="questionCycle($event,-1)">Back</button>
+              </div>
+              <div class="right item2">
+                <button *ngIf = "currentQindex < quizQuestions.length-1" mat-raised-button (click)="questionCycle($event,1)" class="right">Next Question</button>
+              </div>
+            </div>
+          </div> 
+        </mat-card>  
+          
+
   </div>
 </div>
