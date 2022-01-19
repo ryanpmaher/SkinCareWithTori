@@ -8,7 +8,7 @@
             <mat-button-toggle *ngFor="let a of currentA" value = "a">{{a}}</mat-button-toggle>
           </mat-button-toggle-group>
           <mat-button-toggle-group *ngIf ="!currentQmulti" #group="matButtonToggleGroup" name = "selected-answers"  [value] = "selectedAnswer" (change)="onValChange(group.value)">
-            <mat-button-toggle *ngFor="let a of currentA" value = "{{a}}">{{a}}</mat-button-toggle>
+            <mat-button-toggle *ngFor="let a of currentA" value = "{{a}}" class="button-text">{{a}}</mat-button-toggle>
           </mat-button-toggle-group>
           <button *ngIf = "currentQindex > 0" mat-raised-button (click)="questionCycle($event,-1)">Back</button>
           <button *ngIf = "currentQindex < quizQuestions.length-1" mat-raised-button (click)="questionCycle($event,1)">Next Question</button>
