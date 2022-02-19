@@ -10,11 +10,15 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 })
 export class QuestionsComponent implements OnInit, MatCardModule, MatButtonModule ,MatButtonToggleModule{
   public selectedAnswer: string;
+  public selectedAnswers: string[];
+  selectedAns: [string];
   quizQuestions = [];
   currentQindex = 0;
   currentQ = ""
   currentA =[""]
   currentQmulti = false;
+  finalAnswers = [[]];
+  disableNext = true;
   constructor() { 
     this.quizQuestions = QuizQuestionListDB.QuizQuestionList
     this.currentQ = this.quizQuestions[0].quest
@@ -23,16 +27,35 @@ export class QuestionsComponent implements OnInit, MatCardModule, MatButtonModul
     console.log(this.currentA)
   }
   questionCycle(e,increment){
+    if(increment==1&&this.selectedAns){
+      this.finalAnswers[this.currentQindex]=this.selectedAns
+    }
     this.currentQindex += increment;
+    this.disableNext = this.finalAnswers[this.currentQindex] === undefined;
     this.currentQ = this.quizQuestions[this.currentQindex].quest;
     this.currentA = this.quizQuestions[this.currentQindex].answer;
     this.currentQmulti = this.quizQuestions[this.currentQindex].multi;
-    this.selectedAnswer=""
+    if(this.finalAnswers[this.currentQindex] && this.currentQmulti){
+      this.selectedAnswers=this.finalAnswers[this.currentQindex]
+    } else if(this.finalAnswers[this.currentQindex] && !this.currentQmulti){
+      this.selectedAnswer=this.finalAnswers[this.currentQindex][0]
+    }
+    this.selectedAns=undefined;
+
   }
   public onValChange(val: string) {
-    this.selectedAnswer = val;
+    this.selectedAns = [val];
+    this.disableNext = this.selectedAns === undefined;
+  }
+  public onValChangeMult(val: [string]) {
+    this.selectedAns = val;
+    this.disableNext = this.selectedAns === undefined;
+  }
+  public submit(e){
+    console.log("SUBMIT")
   }
   ngOnInit(): void {
+    this.selectedAnswer = ""
   }
 
 }

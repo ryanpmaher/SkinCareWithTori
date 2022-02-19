@@ -4,8 +4,8 @@
           <div class="grid-container">
             <div class="item1"><h1 >{{ currentQ }}</h1></div>
             <div class="item2">
-              <mat-button-toggle-group *ngIf = "currentQmulti" name = "selected-answers" multiple>
-                <mat-button-toggle *ngFor="let a of currentA" value = "a">{{a}}</mat-button-toggle>
+              <mat-button-toggle-group *ngIf = "currentQmulti"  #group="matButtonToggleGroup" name = "selected-answers"  [value] = "selectedAnswers" (change)="onValChangeMult(group.value)" multiple>
+                <mat-button-toggle *ngFor="let a of currentA" value = "{{a}}">{{a}}</mat-button-toggle>
               </mat-button-toggle-group>
             </div>
             <div class="item2">
@@ -18,7 +18,8 @@
                 <button *ngIf = "currentQindex > 0" mat-raised-button (click)="questionCycle($event,-1)">Back</button>
               </div>
               <div class="right item2">
-                <button *ngIf = "currentQindex < quizQuestions.length-1" mat-raised-button (click)="questionCycle($event,1)" class="right">Next Question</button>
+                <button *ngIf = "currentQindex < quizQuestions.length-1" mat-raised-button (click)="questionCycle($event,1)" class="right" [disabled]="disableNext">Next Question</button>
+                <button *ngIf = "currentQindex == quizQuestions.length-1" mat-raised-button (click)="submit($event)" class="right">Submit</button>
               </div>
             </div>
           </div> 
